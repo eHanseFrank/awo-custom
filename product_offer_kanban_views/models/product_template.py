@@ -43,6 +43,7 @@ class ProductTemplate(models.Model):
         digits=dp.get_precision("Discount"),
         compute="_get_discount",
         readonly=True,
+        store=True
     )
     discount_aa_so = fields.Float(
         string="Discount (%)",

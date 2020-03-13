@@ -47,8 +47,9 @@
             <tree string="Product List Price Update" editable="top" delete="false" decoration-danger="net_profit &lt; 0">
                 <field name="default_code" string="Code" readonly="1"/>
                 <field name="name" string="Product Ref" readonly="1"/>
-                <field name="image_medium" string="Image" widget="image" options='{"size": [64, 64]}'/>
+                <field name="image_medium" string="Image" widget="image" options='{"size": [64, 64]}'/>                
                 <field name="list_price" string="Retail HKD"/>
+                <field name="discount" string="%"/>
                 <field name="net_price" string="Sale HKD AA"/>
                 <field name="sale_hkd_aa_so" string="Sale HKD AA Special Offer"/>
                 <field name="sale_hkd_ac" string="Sale HKD AC"/>
@@ -64,7 +65,7 @@
                 <field name="qty_local_own_stock" widget="integer" string="HK Own Qty"/>
                 <field name="qty_local_stock" widget="integer" string="HK S Qty"/>
                 <field name="qty_overseas" string="OS Qty"/>
-                <field name="last_in_date" string="Qnts Inc Day" widget="date"/>
+                <field name="last_in_date" string="Quants Incom Day" widget="date"/>
                 <field name="partner_stock_last_modified" string="OS Update Day" widget="date"/>
                 <field name="partner_note" string="Partner Note"/>
             </tree>
