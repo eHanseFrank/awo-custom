@@ -47,7 +47,7 @@ class ProductTemplate(models.Model):
         string="Stock Location", compute="_get_stock_location", store=True
     )
     stock_leadtime = fields.Char(
-        string="Stock Lead Time", compute="_get_stock_location"
+        string="Stock Lead Time", compute="_get_stock_location", store=True
     )
     partner_note = fields.Text(
         string="Partner Note", compute="_get_stock_location")
@@ -134,8 +134,9 @@ class ProductTemplate(models.Model):
             return loc, supp_lt, partner_note, retail_of_cheapest, curr_of_cheapest
         else:
             return False, False, False, False, False
-
+    
     @api.multi
+    @api.depends('qty_overseas')
     def _get_stock_location(self):
         for pt in self:
             prod_ids = [p.id for p in pt.product_variant_ids]

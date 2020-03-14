@@ -150,6 +150,7 @@ class ProductTemplate(models.Model):
         string="Stock Cost",
         compute="_get_stock_cost",
         digits=dp.get_precision("Product Price"),
+        store=True
     )
     partner_stock_last_modified = fields.Datetime(
         string="Last Modified", readonly=True, store=True
