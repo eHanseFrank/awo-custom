@@ -28,7 +28,7 @@ class ProductTemplate(models.Model):
         store=True,
     )
     sale_hkd_ac = fields.Integer(
-        string="Stock Sale HKD AB", digits=dp.get_precision("Product Price"), store=True
+        string="Stock Sale HKD AC", digits=dp.get_precision("Product Price"), store=True
     )
     sale_hkd_ac_so = fields.Integer(
         string="Stock Sale HKD AC Special Offer",
@@ -36,7 +36,7 @@ class ProductTemplate(models.Model):
         store=True,
     )
     net_price_integer = fields.Integer(  # for kanban presentation
-        string="Net Price", compute="_get_net_price_integer", store=True, readonly=True
+        string="Net Price Integer", compute="_get_net_price_integer", store=True, readonly=True
     )
     discount = fields.Float(
         string="Discount (%)",
@@ -46,25 +46,25 @@ class ProductTemplate(models.Model):
         store=True
     )
     discount_aa_so = fields.Float(
-        string="Discount (%)",
+        string="Discount (%) AA Special Offer",
         digits=dp.get_precision("Discount"),
         compute="_get_discount_aa_so",
         readonly=True,
     )
     discount_ac = fields.Float(
-        string="Discount (%)",
+        string="Discount (%) AC",
         digits=dp.get_precision("Discount"),
         compute="_get_discount_ac",
         readonly=True,
     )
     discount_ac_so = fields.Float(
-        string="Discount (%)",
+        string="Discount (%) AC Special Offer",
         digits=dp.get_precision("Discount"),
         compute="_get_discount_ac_so",
         readonly=True,
     )
     net_price_cny = fields.Float(
-        string="Sale RMB",
+        string="Net in RMB",
         compute="_get_net_price_cny",
         digits=dp.get_precision("Product Price"),
     )
@@ -104,22 +104,22 @@ class ProductTemplate(models.Model):
         digits=dp.get_precision("Product Price"),
     )
     sale_in_usd_so = fields.Float(
-        string="Sale USD",
+        string="Sale USD Special Offer",
         compute="_get_sale_price_currency_discounted",
         digits=dp.get_precision("Product Price"),
     )
     sale_in_eur_so = fields.Float(
-        string="Sale EUR",
+        string="Sale EUR Special Offer",
         compute="_get_sale_price_currency_discounted",
         digits=dp.get_precision("Product Price"),
     )
     sale_in_chf_so = fields.Float(
-        string="Sale CHF",
+        string="Sale CHF Offer",
         compute="_get_sale_price_currency_discounted",
         digits=dp.get_precision("Product Price"),
     )
     sale_in_rmb_so = fields.Float(
-        string="Sale RMB",
+        string="Sale RMB Special Offer",
         compute="_get_sale_price_currency_discounted",
         digits=dp.get_precision("Product Price"),
     )

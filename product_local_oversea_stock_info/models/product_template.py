@@ -36,7 +36,7 @@ class ProductTemplate(models.Model):
         readonly=True,
     )
     qty_local_own_stock = fields.Integer(
-        string="Quantity Local Stock", compute="_get_qty_local_own_stock", store=True
+        string="Quantity Local Own Stock", compute="_get_qty_local_own_stock", store=True
     )
     qty_local_supplier_stock = fields.Integer(
         string="Quantity Local Supplier Stock",
@@ -52,7 +52,7 @@ class ProductTemplate(models.Model):
     partner_note = fields.Text(
         string="Partner Note", compute="_get_stock_location")
     retail_of_cheapest = fields.Float(
-        string="Stock Cost",
+        string="Cheapest",
         compute="_get_stock_location",
         digits=dp.get_precision("Product Price"),
     )
