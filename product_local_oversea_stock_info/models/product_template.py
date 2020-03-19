@@ -21,10 +21,8 @@ class ProductTemplate(models.Model):
         store=True,
         readonly=True,
     )
-    qty_reserved = fields.Integer(
-        string="Quantity Reserved", readonly=True, copy=False)
-    qty_overseas = fields.Integer(
-        string="Quantity Overseas", readonly=True, copy=False)
+    qty_reserved = fields.Integer(string="Quantity Reserved", readonly=True, copy=False)
+    qty_overseas = fields.Integer(string="Quantity Overseas", readonly=True, copy=False)
     last_in_date = fields.Datetime(string="Last Incoming Date", readonly=True)
     local_stock = fields.Char(
         string="Local Stock", compute="_get_local_stock", store=True, readonly=True
@@ -36,7 +34,9 @@ class ProductTemplate(models.Model):
         readonly=True,
     )
     qty_local_own_stock = fields.Integer(
-        string="Quantity Local Own Stock", compute="_get_qty_local_own_stock", store=True
+        string="Quantity Local Own Stock",
+        compute="_get_qty_local_own_stock",
+        store=True,
     )
     qty_local_supplier_stock = fields.Integer(
         string="Quantity Local Supplier Stock",
@@ -49,15 +49,13 @@ class ProductTemplate(models.Model):
     stock_leadtime = fields.Char(
         string="Stock Lead Time", compute="_get_stock_location", store=True
     )
-    partner_note = fields.Text(
-        string="Partner Note", compute="_get_stock_location")
+    partner_note = fields.Text(string="Partner Note", compute="_get_stock_location")
     retail_of_cheapest = fields.Float(
         string="Cheapest",
         compute="_get_stock_location",
         digits=dp.get_precision("Product Price"),
     )
-    curr_of_cheapest = fields.Char(
-        string="Currency", compute="_get_stock_location")
+    curr_of_cheapest = fields.Char(string="Currency", compute="_get_stock_location")
 
     @api.multi
     @api.depends("qty_local_stock")
@@ -134,9 +132,9 @@ class ProductTemplate(models.Model):
             return loc, supp_lt, partner_note, retail_of_cheapest, curr_of_cheapest
         else:
             return False, False, False, False, False
-    
+
     @api.multi
-    @api.depends('qty_overseas')
+    @api.depends("qty_overseas")
     def _get_stock_location(self):
         for pt in self:
             prod_ids = [p.id for p in pt.product_variant_ids]
