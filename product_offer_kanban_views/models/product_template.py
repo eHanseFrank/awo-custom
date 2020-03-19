@@ -36,14 +36,17 @@ class ProductTemplate(models.Model):
         store=True,
     )
     net_price_integer = fields.Integer(  # for kanban presentation
-        string="Net Price Integer", compute="_get_net_price_integer", store=True, readonly=True
+        string="Net Price Integer",
+        compute="_get_net_price_integer",
+        store=True,
+        readonly=True,
     )
     discount = fields.Float(
         string="Discount (%)",
         digits=dp.get_precision("Discount"),
         compute="_get_discount",
         readonly=True,
-        store=True
+        store=True,
     )
     discount_aa_so = fields.Float(
         string="Discount (%) AA Special Offer",
@@ -150,7 +153,6 @@ class ProductTemplate(models.Model):
         string="Stock Cost",
         compute="_get_stock_cost",
         digits=dp.get_precision("Product Price"),
-        store=True
     )
     partner_stock_last_modified = fields.Datetime(
         string="Last Modified", readonly=True, store=True
